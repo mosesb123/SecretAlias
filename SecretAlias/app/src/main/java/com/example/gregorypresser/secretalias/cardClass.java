@@ -1,4 +1,5 @@
-public class Card {
+package com.example.gregorypresser.secretalias;
+class Card {
     private String alias; //The alias listed on the card
     private boolean revealed; //The card was revealed by the guesser or not
     private String type = "passenger"; //The card must be: purple, green, passenger, spy
@@ -9,19 +10,17 @@ public class Card {
         type = setType;
     }
     //These functions return the values to the app
-    public String alias () {
+    public String getAlias () {
         return alias;
     }
-    public boolean revealed () {
+    public boolean getRevealed () {
         return revealed;
     }
-    public String type() {
+    public String getType() {
         return type;
     }
-    public void cardFlip{ //if a card is tapped, it becomes revelaed to the guessers
-        if(revealed)
-            return "That card is already revealed! Choose another."; //or something like that message
-        else
+    public void cardFlip () { //if a card is tapped, it becomes revelaed to the guessers
+        if(!revealed)
             revealed = !revealed;
     }
 }
