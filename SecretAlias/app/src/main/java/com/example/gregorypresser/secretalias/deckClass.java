@@ -35,8 +35,10 @@ class Deck {
             }
         }
     }
-
-    public typeSetter (int i) {
+    public Deck getDeck () {
+        return currentDeck;
+    }
+    public String typeSetter (int i) {
         if (i == 0) //first one gives spy
             return "spy";
         else if (i < purples + 1) // 1 until 8 or 9 gives purple
