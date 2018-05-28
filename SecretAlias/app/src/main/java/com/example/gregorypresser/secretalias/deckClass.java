@@ -18,29 +18,29 @@ class Deck {
             greens++;
     int cR = 0; //Current Row
     int cC = 0; //Current Column
-    int todaysAliasIndex = 0;
-    int todaysAliasesRemaining = allAliases.size;
-    ArrayList todaysAliases  = allAliases.clone();
-    for (int i = 0; i < 16; i++) {
-        cR = (int)(Math.random() * 5);
+    int todaysAliasIndex = 0; // random index of alias we are using
+    int todaysAliasesRemaining = allAliases.size; 
+    ArrayList todaysAliases  = allAliases.clone(); //cloned list, because we will be removing some elements later
+    for (int i = 0; i < 16; i++) { // purples + greens + spy = 16
+        cR = (int)(Math.random() * 5); 
         cC = (int)(Math.random() * 5);
         todaysAliasIndex = (int)(Math.random() * todaysAliasesRemaining);
-        if (currentDeck[cR][cC].getType().equals("passenger"))
+        if (!(currentDeck[cR][cC].getType().equals("passenger"))) //if this random spot is occupied, we pick a new one
             i--;
         else {
-                currentDeck[cR][cC] = new Card(todaysAliases.get(todaysAliasIndex), typeSetter(i));
+                currentDeck[cR][cC] = new Card(todaysAliases.get(todaysAliasIndex), typeSetter(i)); //putting in an alias and a type
                 todaysAliasesRemaining--;
-                todaysAliases.remove(todaysAliasIndex);
+                todaysAliases.remove(todaysAliasIndex); //removing that alias from this game's pile
                 
             }
         }
     }
 
     public typeSetter (int i) {
-        if (i == 0) 
+        if (i == 0) //first one gives spy
             return "spy";
-        else if (i < purples + 1)
+        else if (i < purples + 1) // 1 until 8 or 9 gives purple
             return "purple";
-        return "green";
+        return "green"; //the rest, which is 8 or 9 until 16 will be green. after it is 16 this method wont be called anymore anyway
     }
 }
